@@ -25,6 +25,8 @@ class JokenpoApp extends StatelessWidget {
 }
 
 class JokenpoScreen extends StatefulWidget {
+  const JokenpoScreen({super.key});
+
   @override
   _JokenpoScreenState createState() => _JokenpoScreenState();
 }
@@ -70,76 +72,79 @@ class _JokenpoScreenState extends State<JokenpoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Jokenpô")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Escolha sua jogada:",
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:
-                  opcoes.map((opcao) {
-                    return GestureDetector(
-                      onTap: () => jogar(opcao),
-                      child: Container(
-                        margin: EdgeInsets.all(8),
-                        padding: EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color:
-                              escolhaJogador == opcao
-                                  ? Colors.blue
-                                  : Colors.grey[700],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(imagens[opcao]!, width: 80),
-                            SizedBox(height: 5),
-                            Text(
-                              opcao,
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed:
-                  escolhaJogador != null
-                      ? () {
-                        setState(() {
-                          jogar(escolhaJogador!);
-                        });
-                      }
-                      : null,
-              child: Text("JOGAR"),
-            ),
-            SizedBox(height: 20),
-            if (escolhaJogador != null && escolhaMaquina != null) ...[
-              Text("Você escolheu:", style: TextStyle(fontSize: 18)),
-              Image.asset(imagens[escolhaJogador!]!, width: 100),
-              Text("Máquina escolheu:", style: TextStyle(fontSize: 18)),
-              Image.asset(imagens[escolhaMaquina!]!, width: 100),
+      body: SingleChildScrollView(
+        // Adiciona a rolagem
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Text(
-                resultado,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
+                "Escolha sua jogada:",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:
+                    opcoes.map((opcao) {
+                      return GestureDetector(
+                        onTap: () => jogar(opcao),
+                        child: Container(
+                          margin: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color:
+                                escolhaJogador == opcao
+                                    ? Colors.blueAccent
+                                    : Colors.grey[700],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            children: [
+                              Image.asset(imagens[opcao]!, width: 80),
+                              SizedBox(height: 5),
+                              Text(
+                                opcao,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed:
+                    escolhaJogador != null
+                        ? () {
+                          setState(() {
+                            jogar(escolhaJogador!);
+                          });
+                        }
+                        : null,
+                child: Text("JOGAR"),
+              ),
+              SizedBox(height: 20),
+              if (escolhaJogador != null && escolhaMaquina != null) ...[
+                Text("Você escolheu:", style: TextStyle(fontSize: 18)),
+                Image.asset(imagens[escolhaJogador!]!, width: 100),
+                Text("Máquina escolheu:", style: TextStyle(fontSize: 18)),
+                Image.asset(imagens[escolhaMaquina!]!, width: 100),
+                Text(
+                  resultado,
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
+                ),
+              ],
             ],
-          ],
+          ),
         ),
       ),
     );
