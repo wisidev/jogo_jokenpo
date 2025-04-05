@@ -1,0 +1,7 @@
+.git
+.buildlog
+.dart_tool
+.packages
+.pub
+flutter/bin/cache
+build/
