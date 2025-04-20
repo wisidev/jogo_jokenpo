@@ -102,30 +102,33 @@ class _JokenpoScreenState extends State<JokenpoScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children:
                           opcoes.map((opcao) {
-                            return GestureDetector(
-                              onTap: () => jogar(opcao),
-                              child: Container(
-                                margin: EdgeInsets.all(8),
-                                padding: EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color:
-                                      escolhaJogador == opcao
-                                          ? Colors.blueAccent
-                                          : Colors.grey[700],
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Column(
-                                  children: [
-                                    Image.asset(imagens[opcao]!, width: 80),
-                                    SizedBox(height: 5),
-                                    Text(
-                                      opcao,
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
+                            return MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () => jogar(opcao),
+                                child: Container(
+                                  margin: EdgeInsets.all(8),
+                                  padding: EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    color:
+                                        escolhaJogador == opcao
+                                            ? Colors.blueAccent
+                                            : Colors.grey[700],
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Image.asset(imagens[opcao]!, width: 80),
+                                      SizedBox(height: 5),
+                                      Text(
+                                        opcao,
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             );
