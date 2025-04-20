@@ -1,4 +1,4 @@
-# Jogo Jokenpo
+# Jogo Jokenpô
 
 Este projeto implementa um jogo simples de Jokenpô (Pedra, Papel, Tesoura) utilizando Flutter. O jogo permite que o usuário escolha entre as três opções e compete contra a máquina, mostrando o resultado em tempo real e pontuação atualizada.
 
